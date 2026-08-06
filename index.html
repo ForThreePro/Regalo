@@ -5,38 +5,84 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para Lucero ❤️</title>
 <style>
-body { 
+* { box-sizing: border-box; }
+body {
   background: linear-gradient(180deg, #1a001a 0%, #330033 100%);
-  font-family: 'Segoe UI', sans-serif; 
-  text-align: center; 
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
   margin: 0;
   padding: 20px;
   overflow-x: hidden;
   color: #fff;
 }
-h1 { color: #ff80bf; font-size: 2.6em; text-shadow: 0 0 10px #ff4d6d; }
-.sub { color: #ffb3d9; }
-.contador, .carta, .foto { 
+h1 { color: #ff80bf; font-size: 2.6em; text-shadow: 0 0 15px #ff4d6d; margin-bottom: 5px; }
+.sub { color: #ffb3d9; margin-bottom: 20px; }
+.boton { background: #ff4d6d; color: white; border: none; padding: 15px 30px; font-size: 1.2em; border-radius: 50px; cursor: pointer; margin: 20px 10px; box-shadow: 0 0 20px #ff4d6d; transition: 0.3s; }
+.boton:hover { transform: scale(1.1); }
+
+.contador { background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); border-radius: 20px; padding: 20px; max-width: 600px; margin: 20px auto; border: 1px solid rgba(255,255,255,0.1); }
+.contador h2 { color: #ff80bf; }
+.tiempo { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.tiempo div { background: rgba(255,128,191,0.2); padding: 10px 15px; border-radius: 12px; }
+.tiempo span { font-size: 1.8em; color: #ff80bf; display: block; }
+
+.galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px; margin: 30px auto; }
+.foto { background: rgba(255,255,255,0.08); border-radius: 20px; padding: 12px; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; }
+.foto img { width: 100%; border-radius: 15px; transition: 0.4s; }
+.foto:hover img { transform: scale(1.1); filter: brightness(0.5); }
+.frase {
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+  right: 10px;
+  font-style: italic;
+  color: #fff;
+  font-size: 0.9em;
+  min-height: 40px;
+  text-shadow: 0 0 8px #000;
+}
+
+.calendario {
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  max-width: 1000px;
+  margin: 40px auto;
   border: 1px solid rgba(255,255,255,0.1);
 }
-.contador { border-radius: 20px; padding: 20px; max-width: 600px; margin: 20px auto; }
-.tiempo { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-.tiempo div { background: rgba(255,128,191,0.2); padding: 10px; border-radius: 12px; }
-.tiempo span { font-size: 1.8em; color: #ff80bf; display: block; }
-.galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px; margin: 30px auto; }
-.foto { border-radius: 20px; padding: 12px; position: relative; overflow: hidden; }
-.foto img { width: 100%; border-radius: 15px; transition: 0.4s; }
-.foto:hover img { transform: scale(1.1); filter: brightness(0.6); }
-.frase { position: absolute; bottom: 20px; left: 0; right: 0; opacity: 0; transition: 0.4s; font-style: italic; padding: 0 10px; }
-.foto:hover .frase { opacity: 1; }
-.carta { border-radius: 20px; padding: 30px; max-width: 700px; margin: 40px auto; text-align: left; }
+.sub-cal { color: #ffb3d9; margin-bottom: 20px; }
+#calendario-header { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 20px; }
+#calendario-header button { background: #ff4d6d; border: none; color: white; padding: 8px 20px; border-radius: 10px; cursor: pointer; font-size: 1.3em; }
+#ano-actual { font-size: 1.8em; color: #ff80bf; font-weight: bold; }
+#meses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.mes { background: rgba(0,0,0,0.2); border-radius: 15px; padding: 15px; }
+.mes h4 { color: #ff80bf; margin: 0 0 10px 0; text-align: center; }
+.dias-semana,.dias-mes { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; font-size: 0.85em; }
+.dias-semana span { color: #ffb3d9; text-align: center; font-weight: bold; }
+.dia { padding: 6px; border-radius: 8px; text-align: center; }
+.dia.especial { background: #ff4d6d; color: white; box-shadow: 0 0 10px #ff4d6d; font-weight: bold; }
+.eventos { margin-top: 25px; text-align: left; max-width: 600px; margin-inline: auto; }
+
+.carta { background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; max-width: 700px; margin: 40px auto; text-align: left; border: 1px solid rgba(255,255,255,0.1); }
+.carta h2 { color: #ff80bf; text-align: center; }
 #texto-carta { font-size: 1.1em; line-height: 1.8; min-height: 150px; border-right: 2px solid #ff80bf; white-space: pre-wrap; }
-.boton { background: #ff4d6d; color: white; border: none; padding: 15px 30px; font-size: 1.2em; border-radius: 50px; cursor: pointer; margin: 20px; box-shadow: 0 0 20px #ff4d6d; transition: 0.3s; }
-.boton:hover { transform: scale(1.1); }
-.corazon { position: fixed; top: -10vh; color: #ff4d6d; animation: caer 5s linear infinite; pointer-events: none; }
-@keyframes caer { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+
+footer { margin-top: 40px; color: #ff80bf; font-weight: bold; font-size: 1.2em; }
+
+/* Corazones */
+.corazon {
+  position: fixed;
+  top: -10vh;
+  color: #ff4d6d;
+  font-size: 18px;
+  animation: caer 5s linear infinite;
+  pointer-events: none;
+  z-index: 999;
+}
+@keyframes caer {
+  to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
 </style>
 </head>
 <body>
@@ -47,6 +93,7 @@ h1 { color: #ff80bf; font-size: 2.6em; text-shadow: 0 0 10px #ff4d6d; }
 <button class="boton" onclick="iniciarMusica()">Toca para mí ❤️</button>
 <audio id="musica" loop><source src="musica.mp3" type="audio/mpeg"></audio>
 
+<!-- CONTADOR -->
 <div class="contador">
   <h2>Llevamos juntos:</h2>
   <div class="tiempo">
@@ -57,25 +104,82 @@ h1 { color: #ff80bf; font-size: 2.6em; text-shadow: 0 0 10px #ff4d6d; }
   </div>
 </div>
 
+<!-- GALERIA CON FRASES QUE SE ESCRIBEN -->
 <div class="galeria">
-  <div class="foto"><img src="https://files.evogb.win/rA6oiw.jpg"><p class="frase">Ese día empezó todo. Y no lo cambiaría por nada.</p></div>
-  <div class="foto"><img src="https://files.evogb.win/WCDwKJ.jpg"><p class="frase">Contigo hasta lo más simple se vuelve mi momento favorito.</p></div>
-  <div class="foto"><img src="https://files.evogb.win/Ya4UNB.jpg"><p class="frase">Tu risa es mi lugar seguro.</p></div>
-  <div class="foto"><img src="https://files.evogb.win/zGwPRv.jpg"><p class="frase">Gracias por quedarte en mis días normales y hacerlos extraordinarios.</p></div>
-  <div class="foto"><img src="https://files.evogb.win/dh6Y5p.jpg"><p class="frase">Si el tiempo se detuviera, que sea en un momento como este contigo.</p></div>
+  <div class="foto" onmouseenter="escribirFrase(0, this)">
+    <img src="https://files.evogb.win/rA6oiw.jpg" alt="Recuerdo 1">
+    <p class="frase" data-texto="Ese día empezó todo. Y no lo cambiaría por nada."></p>
+  </div>
+  <div class="foto" onmouseenter="escribirFrase(1, this)">
+    <img src="https://files.evogb.win/WCDwKJ.jpg" alt="Recuerdo 2">
+    <p class="frase" data-texto="Contigo hasta lo más simple se vuelve mi momento favorito."></p>
+  </div>
+  <div class="foto" onmouseenter="escribirFrase(2, this)">
+    <img src="https://files.evogb.win/Ya4UNB.jpg" alt="Recuerdo 3">
+    <p class="frase" data-texto="Tu risa es mi lugar seguro."></p>
+  </div>
+  <div class="foto" onmouseenter="escribirFrase(3, this)">
+    <img src="https://files.evogb.win/zGwPRv.jpg" alt="Recuerdo 4">
+    <p class="frase" data-texto="Gracias por quedarte en mis días normales y hacerlos extraordinarios."></p>
+  </div>
+  <div class="foto" onmouseenter="escribirFrase(4, this)">
+    <img src="https://files.evogb.win/dh6Y5p.jpg" alt="Recuerdo 5">
+    <p class="frase" data-texto="Si el tiempo se detuviera, que sea en un momento como este contigo."></p>
+  </div>
 </div>
 
+<!-- CALENDARIO 2026 - 2090 -->
+<div class="calendario">
+  <h2>Nuestro Calendario Hasta el 2090 📅</h2>
+  <p class="sub-cal">Cada día 6 está marcado porque es nuestro día ❤️</p>
+
+  <div id="calendario-header">
+    <button onclick="cambiarAno(-1)">‹</button>
+    <span id="ano-actual">2026</span>
+    <button onclick="cambiarAno(1)">›</button>
+  </div>
+
+  <div id="meses-grid"></div>
+
+  <div class="eventos">
+    <h3>Fechas importantes:</h3>
+    <p>❤️ <b>6 Julio 2026 4:23pm</b> - Empezamos nuestra historia</p>
+    <p>❤️ <b>6 de cada mes</b> - Nuestro mesversario</p>
+    <p>❤️ <b>6 Julio</b> - Nuestro aniversario</p>
+  </div>
+</div>
+
+<!-- CARTA -->
 <div class="carta">
   <h2>Una carta para ti, Lucero</h2>
   <div id="texto-carta"></div>
 </div>
 
 <button class="boton" onclick="finalFeliz()">¿Quieres ser mi todo? ❤️</button>
-<p id="respuesta" style="font-size:1.5em; color:#ff80bf;"></p>
+<p id="respuesta" style="font-size:1.5em; color:#ff80bf; min-height:40px;"></p>
 
 <footer>Te amo hoy, mañana y siempre<br>- Cristhofer</footer>
 
 <script>
+// CORAZONES
+function crearCorazon() {
+  const c = document.createElement('div');
+  c.classList.add('corazon');
+  c.style.left = Math.random() * 100 + 'vw';
+  c.style.animationDuration = Math.random() * 2 + 3 + 's';
+  c.innerText = '❤️';
+  document.body.appendChild(c);
+  setTimeout(() => c.remove(), 5000);
+}
+setInterval(crearCorazon, 250);
+
+// MUSICA
+function iniciarMusica() {
+  document.getElementById('musica').play();
+  for(let i=0; i<50; i++) setTimeout(crearCorazon, i*30);
+}
+
+// CONTADOR DESDE 2026-07-06 16:23
 const fechaInicio = new Date('2026-07-06T16:23:00').getTime();
 function actualizarContador() {
   const dif = new Date().getTime() - fechaInicio;
@@ -84,41 +188,94 @@ function actualizarContador() {
   document.getElementById('minutos').innerText = Math.floor((dif % 3600000) / 60000);
   document.getElementById('segundos').innerText = Math.floor((dif % 60000) / 1000);
 }
-setInterval(actualizarContador, 1000); actualizarContador();
+setInterval(actualizarContador, 1000);
+actualizarContador();
 
-function crearCorazon() {
-  const c = document.createElement('div'); c.classList.add('corazon');
-  c.style.left = Math.random() * 100 + 'vw'; c.innerText = '❤️';
-  document.body.appendChild(c); setTimeout(() => c.remove(), 5000);
+// FRASES EN FOTOS CON EFECTO ESCRITURA
+let escribiendo = [false, false, false, false, false];
+function escribirFrase(index, elemento) {
+  if(escribiendo[index]) return;
+  escribiendo[index] = true;
+  const p = elemento.querySelector('.frase');
+  const texto = p.getAttribute('data-texto');
+  let i = 0;
+  p.innerHTML = '';
+  function type() {
+    if(i < texto.length) {
+      p.innerHTML += texto.charAt(i);
+      i++;
+      setTimeout(type, 40);
+    }
+  }
+  type();
 }
-setInterval(crearCorazon, 200);
 
-function iniciarMusica() {
-  document.getElementById('musica').play();
-  for(let i=0; i<50; i++) setTimeout(crearCorazon, i*30);
+// CALENDARIO 2026-2090
+let anoActual = 2026;
+const mesesNombres = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+
+function renderAno() {
+  document.getElementById('ano-actual').innerText = anoActual;
+  const grid = document.getElementById('meses-grid');
+  grid.innerHTML = '';
+
+  for(let mes = 0; mes < 12; mes++) {
+    const primerDia = new Date(anoActual, mes, 1).getDay();
+    const diasEnMes = new Date(anoActual, mes + 1, 0).getDate();
+
+    let htmlMes = `<div class="mes"><h4>${mesesNombres[mes]}</h4>`;
+    htmlMes += `<div class="dias-semana"><span>D</span><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span></div>`;
+    htmlMes += `<div class="dias-mes">`;
+
+    for(let i = 0; i < primerDia; i++) htmlMes += `<div></div>`;
+
+    for(let d = 1; d <= diasEnMes; d++) {
+      let clase = 'dia';
+      if(d === 6) clase += ' especial';
+      htmlMes += `<div class="${clase}">${d}</div>`;
+    }
+    htmlMes += `</div></div>`;
+    grid.innerHTML += htmlMes;
+  }
 }
 
-const texto = `Lucero,
+function cambiarAno(dif) {
+  anoActual += dif;
+  if(anoActual < 2026) anoActual = 2026;
+  if(anoActual > 2090) anoActual = 2090;
+  renderAno();
+}
+renderAno();
 
-Desde el 6 de julio a las 4:23pm mi mundo cambió. 
+// CARTA CON EFECTO ESCRITURA
+const textoCarta = `Lucero,
+
+Desde el 6 de julio de 2026 a las 4:23pm mi mundo cambió.
 Gracias por cada risa, cada abrazo, cada "aquí estoy".
 
-En cada foto hay un pedazo de nosotros. 
+En cada foto hay un pedazo de nosotros.
 Y en mi corazón, estás tú completa.
 
-Te elijo hoy, mañana y todos los días de mi vida.
+Prometo seguir eligiéndote en cada uno de los días 6 que vienen,
+hasta el 2090 y más allá.
 
-Con todo mi amor,
+Te amo,
 Cristhofer ❤️`;
-let i = 0; function escribir() {
-  if (i < texto.length) { document.getElementById('texto-carta').innerHTML += texto.charAt(i); i++; setTimeout(escribir, 45); }
+let iCarta = 0;
+function escribirCarta() {
+  if (iCarta < textoCarta.length) {
+    document.getElementById('texto-carta').innerHTML += textoCarta.charAt(iCarta);
+    iCarta++;
+    setTimeout(escribirCarta, 45);
+  }
 }
-window.onload = escribir;
+window.onload = escribirCarta;
 
 function finalFeliz() {
-  document.getElementById('respuesta').innerText = "Sabía que dirías que sí 😍 Te amo";
-  for(let i=0; i<100; i++) setTimeout(crearCorazon, i*20);
+  document.getElementById('respuesta').innerText = "Sabía que dirías que sí 😍 Te amo por siempre";
+  for(let i=0; i<100; i++) setTimeout(crearCorazon, i*15);
 }
 </script>
+
 </body>
 </html>
