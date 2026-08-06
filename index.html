@@ -131,7 +131,7 @@ footer { margin-top: 40px; color: #ff80bf; font-weight: bold; font-size: 1.2em; 
 <!-- CALENDARIO 2026 - 2090 -->
 <div class="calendario">
   <h2>Nuestro Calendario Hasta el 2090 📅</h2>
-  <p class="sub-cal">Cada día 6 está marcado porque es nuestro día ❤️</p>
+  <p class="sub-cal">Nuestra historia empezó en Julio 2026. Cada día 6 está marcado ❤️</p>
 
   <div id="calendario-header">
     <button onclick="cambiarAno(-1)">‹</button>
@@ -210,7 +210,7 @@ function escribirFrase(index, elemento) {
   type();
 }
 
-// CALENDARIO 2026-2090
+// CALENDARIO 2026-2090 - EMPIEZA EN JULIO 2026
 let anoActual = 2026;
 const mesesNombres = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 
@@ -219,7 +219,10 @@ function renderAno() {
   const grid = document.getElementById('meses-grid');
   grid.innerHTML = '';
 
-  for(let mes = 0; mes < 12; mes++) {
+  let mesInicio = 0;
+  if(anoActual === 2026) mesInicio = 6; // Julio = mes 6
+
+  for(let mes = mesInicio; mes < 12; mes++) {
     const primerDia = new Date(anoActual, mes, 1).getDay();
     const diasEnMes = new Date(anoActual, mes + 1, 0).getDate();
 
@@ -257,7 +260,7 @@ En cada foto hay un pedazo de nosotros.
 Y en mi corazón, estás tú completa.
 
 Prometo seguir eligiéndote en cada uno de los días 6 que vienen,
-hasta el 2090 y más allá.
+desde este Julio 2026 hasta el 2090 y más allá.
 
 Te amo,
 Cristhofer ❤️`;
