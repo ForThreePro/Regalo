@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuestra Historia De Amor ❤️</title>
+<title>Para Lucero ❤️</title>
 <style>
 body { 
   background: linear-gradient(180deg, #ffe4ec 0%, #fff0f5 100%);
@@ -11,19 +11,39 @@ body {
   text-align: center; 
   margin: 0;
   padding: 20px;
+  overflow-x: hidden;
 }
 h1 { 
   color: #d63384; 
   font-size: 2.4em;
   margin-bottom: 5px;
 }
-.sub { color: #777; margin-bottom: 20px; font-size: 1.1em; }
+.sub { color: #777; margin-bottom: 10px; }
+.contador {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 6px 15px rgba(214,51,132,0.15);
+}
+.contador h2 { color: #d63384; margin: 0 0 10px 0; }
+.tiempo { 
+  display: flex; 
+  justify-content: center; 
+  gap: 15px; 
+  font-weight: bold;
+  color: #444;
+  flex-wrap: wrap;
+}
+.tiempo div { background: #ffe4ec; padding: 10px 15px; border-radius: 12px; }
+.tiempo span { font-size: 1.8em; color: #d63384; display: block; }
 .galeria { 
   display: grid; 
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
   gap: 20px; 
   max-width: 900px;
-  margin: auto;
+  margin: 30px auto;
 }
 .foto { 
   background: white; 
@@ -32,7 +52,7 @@ h1 {
   box-shadow: 0 6px 15px rgba(214,51,132,0.15);
   transition: transform 0.3s;
 }
-.foto:hover { transform: scale(1.03); }
+.foto:hover { transform: scale(1.03) rotate(-1deg); }
 .foto img { 
   width: 100%; 
   border-radius: 15px; 
@@ -42,17 +62,75 @@ h1 {
   color: #444; 
   font-style: italic;
 }
+
+/* CARTA */
+.carta {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 700px;
+  margin: 40px auto;
+  box-shadow: 0 8px 20px rgba(214,51,132,0.2);
+  text-align: left;
+}
+.carta h2 { color: #d63384; text-align: center; }
+#texto-carta {
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: #444;
+  min-height: 150px;
+  border-right: 2px solid #d63384;
+  white-space: pre-wrap;
+}
+
 footer { margin-top: 40px; color: #d63384; font-weight: bold; font-size: 1.2em; }
+
+/* Corazones */
+.corazon {
+  position: fixed;
+  top: -10vh;
+  color: #ff4d6d;
+  font-size: 20px;
+  animation: caer 5s linear infinite;
+  pointer-events: none;
+}
+@keyframes caer {
+  to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
 </style>
 </head>
 <body>
 
-<h1>Nuestra Historia De Amor</h1>
-<p class="sub">Cada foto guarda un pedacito de ti</p>
+<!-- Corazones -->
+<script>
+function crearCorazon() {
+  const corazon = document.createElement('div');
+  corazon.classList.add('corazon');
+  corazon.style.left = Math.random() * 100 + 'vw';
+  corazon.style.animationDuration = Math.random() * 3 + 3 + 's';
+  corazon.innerText = '❤️';
+  document.body.appendChild(corazon);
+  setTimeout(() => corazon.remove(), 5000);
+}
+setInterval(crearCorazon, 300);
+</script>
+
+<h1>Para Lucero</h1>
+<p class="sub">De: Cristhofer | Desde el 6 de Julio 2026 - 4:23pm</p>
+
+<!-- CONTADOR -->
+<div class="contador">
+  <h2>Llevamos juntos:</h2>
+  <div class="tiempo" id="contador">
+    <div><span id="dias">0</span>Días</div>
+    <div><span id="horas">0</span>Horas</div>
+    <div><span id="minutos">0</span>Min</div>
+    <div><span id="segundos">0</span>Seg</div>
+  </div>
+</div>
 
 <audio controls autoplay loop>
-  <source src="musica.mp3" type="audio/mpeg">
-  Tu navegador no soporta audio.
+  <source src="música.mp3" type="audio/mpeg">
 </audio>
 
 <div class="galeria">
@@ -78,6 +156,59 @@ footer { margin-top: 40px; color: #d63384; font-weight: bold; font-size: 1.2em; 
   </div>
 </div>
 
-<footer>Te amo ❤️</footer>
+<!-- CARTA CON EFECTO ESCRITURA -->
+<div class="carta">
+  <h2>Una carta para ti, Lucero</h2>
+  <div id="texto-carta"></div>
+</div>
+
+<footer>Te amo hoy, mañana y siempre ❤️<br>- Cristhofer</footer>
+
+<script>
+// CONTADOR desde 6 Julio 2026 4:23pm
+const fechaInicio = new Date('2026-07-06T16:23:00').getTime();
+
+function actualizarContador() {
+  const ahora = new Date().getTime();
+  const diferencia = ahora - fechaInicio;
+
+  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+  const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+  document.getElementById('dias').innerText = dias;
+  document.getElementById('horas').innerText = horas;
+  document.getElementById('minutos').innerText = minutos;
+  document.getElementById('segundos').innerText = segundos;
+}
+setInterval(actualizarContador, 1000);
+actualizarContador();
+
+// EFECTO MAQUINA DE ESCRIBIR
+const texto = `Lucero,
+
+Desde el momento exacto en que empezamos el 6 de julio a las 4:23pm, mi vida cambió.
+
+Cada día contigo se siente como el primero. Gracias por tus abrazos, por tus risas, por quedarte.
+
+En estas fotos está guardada una parte de nosotros. Y en mi corazón está guardada toda tú.
+
+Prometo seguir eligiéndote todos los días.
+
+Con todo mi amor,
+Cristhofer ❤️`;
+
+let i = 0;
+function escribir() {
+  if (i < texto.length) {
+    document.getElementById('texto-carta').innerHTML += texto.charAt(i);
+    i++;
+    setTimeout(escribir, 50); // velocidad de escritura
+  }
+}
+window.onload = escribir;
+</script>
+
 </body>
 </html>
