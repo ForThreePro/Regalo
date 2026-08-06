@@ -6,122 +6,50 @@
 <title>Para Lucero ❤️</title>
 <style>
 body { 
-  background: linear-gradient(180deg, #ffe4ec 0%, #fff0f5 100%);
+  background: linear-gradient(180deg, #1a001a 0%, #330033 100%);
   font-family: 'Segoe UI', sans-serif; 
   text-align: center; 
   margin: 0;
   padding: 20px;
   overflow-x: hidden;
+  color: #fff;
 }
-h1 { 
-  color: #d63384; 
-  font-size: 2.4em;
-  margin-bottom: 5px;
+h1 { color: #ff80bf; font-size: 2.6em; text-shadow: 0 0 10px #ff4d6d; }
+.sub { color: #ffb3d9; }
+.contador, .carta, .foto { 
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
 }
-.sub { color: #777; margin-bottom: 10px; }
-.contador {
-  background: white;
-  border-radius: 20px;
-  padding: 20px;
-  max-width: 600px;
-  margin: 20px auto;
-  box-shadow: 0 6px 15px rgba(214,51,132,0.15);
-}
-.contador h2 { color: #d63384; margin: 0 0 10px 0; }
-.tiempo { 
-  display: flex; 
-  justify-content: center; 
-  gap: 15px; 
-  font-weight: bold;
-  color: #444;
-  flex-wrap: wrap;
-}
-.tiempo div { background: #ffe4ec; padding: 10px 15px; border-radius: 12px; }
-.tiempo span { font-size: 1.8em; color: #d63384; display: block; }
-.galeria { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 20px; 
-  max-width: 900px;
-  margin: 30px auto;
-}
-.foto { 
-  background: white; 
-  border-radius: 20px; 
-  padding: 12px; 
-  box-shadow: 0 6px 15px rgba(214,51,132,0.15);
-  transition: transform 0.3s;
-}
-.foto:hover { transform: scale(1.03) rotate(-1deg); }
-.foto img { 
-  width: 100%; 
-  border-radius: 15px; 
-}
-.frase { 
-  margin-top: 12px; 
-  color: #444; 
-  font-style: italic;
-}
-
-/* CARTA */
-.carta {
-  background: white;
-  border-radius: 20px;
-  padding: 30px;
-  max-width: 700px;
-  margin: 40px auto;
-  box-shadow: 0 8px 20px rgba(214,51,132,0.2);
-  text-align: left;
-}
-.carta h2 { color: #d63384; text-align: center; }
-#texto-carta {
-  font-size: 1.1em;
-  line-height: 1.8;
-  color: #444;
-  min-height: 150px;
-  border-right: 2px solid #d63384;
-  white-space: pre-wrap;
-}
-
-footer { margin-top: 40px; color: #d63384; font-weight: bold; font-size: 1.2em; }
-
-/* Corazones */
-.corazon {
-  position: fixed;
-  top: -10vh;
-  color: #ff4d6d;
-  font-size: 20px;
-  animation: caer 5s linear infinite;
-  pointer-events: none;
-}
-@keyframes caer {
-  to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-}
+.contador { border-radius: 20px; padding: 20px; max-width: 600px; margin: 20px auto; }
+.tiempo { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.tiempo div { background: rgba(255,128,191,0.2); padding: 10px; border-radius: 12px; }
+.tiempo span { font-size: 1.8em; color: #ff80bf; display: block; }
+.galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px; margin: 30px auto; }
+.foto { border-radius: 20px; padding: 12px; position: relative; overflow: hidden; }
+.foto img { width: 100%; border-radius: 15px; transition: 0.4s; }
+.foto:hover img { transform: scale(1.1); filter: brightness(0.6); }
+.frase { position: absolute; bottom: 20px; left: 0; right: 0; opacity: 0; transition: 0.4s; font-style: italic; padding: 0 10px; }
+.foto:hover .frase { opacity: 1; }
+.carta { border-radius: 20px; padding: 30px; max-width: 700px; margin: 40px auto; text-align: left; }
+#texto-carta { font-size: 1.1em; line-height: 1.8; min-height: 150px; border-right: 2px solid #ff80bf; white-space: pre-wrap; }
+.boton { background: #ff4d6d; color: white; border: none; padding: 15px 30px; font-size: 1.2em; border-radius: 50px; cursor: pointer; margin: 20px; box-shadow: 0 0 20px #ff4d6d; transition: 0.3s; }
+.boton:hover { transform: scale(1.1); }
+.corazon { position: fixed; top: -10vh; color: #ff4d6d; animation: caer 5s linear infinite; pointer-events: none; }
+@keyframes caer { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
 </style>
 </head>
 <body>
 
-<!-- Corazones -->
-<script>
-function crearCorazon() {
-  const corazon = document.createElement('div');
-  corazon.classList.add('corazon');
-  corazon.style.left = Math.random() * 100 + 'vw';
-  corazon.style.animationDuration = Math.random() * 3 + 3 + 's';
-  corazon.innerText = '❤️';
-  document.body.appendChild(corazon);
-  setTimeout(() => corazon.remove(), 5000);
-}
-setInterval(crearCorazon, 300);
-</script>
-
 <h1>Para Lucero</h1>
-<p class="sub">De: Cristhofer | Desde el 6 de Julio 2026 - 4:23pm</p>
+<p class="sub">De: Cristhofer | 6 de Julio 2026 - 4:23pm</p>
 
-<!-- CONTADOR -->
+<button class="boton" onclick="iniciarMusica()">Toca para mí ❤️</button>
+<audio id="musica" loop><source src="musica.mp3" type="audio/mpeg"></audio>
+
 <div class="contador">
   <h2>Llevamos juntos:</h2>
-  <div class="tiempo" id="contador">
+  <div class="tiempo">
     <div><span id="dias">0</span>Días</div>
     <div><span id="horas">0</span>Horas</div>
     <div><span id="minutos">0</span>Min</div>
@@ -129,86 +57,68 @@ setInterval(crearCorazon, 300);
   </div>
 </div>
 
-<audio controls autoplay loop>
-  <source src="música.mp3" type="audio/mpeg">
-</audio>
-
 <div class="galeria">
-  <div class="foto">
-    <img src="https://files.evogb.win/rA6oiw.jpg" alt="Nuestro recuerdo 1">
-    <p class="frase">Ese día empezó todo. Y no lo cambiaría por nada.</p>
-  </div>
-  <div class="foto">
-    <img src="https://files.evogb.win/WCDwKJ.jpg" alt="Nuestro recuerdo 2">
-    <p class="frase">Contigo hasta lo más simple se vuelve mi momento favorito.</p>
-  </div>
-  <div class="foto">
-    <img src="https://files.evogb.win/Ya4UNB.jpg" alt="Nuestro recuerdo 3">
-    <p class="frase">Tu risa es mi lugar seguro.</p>
-  </div>
-  <div class="foto">
-    <img src="https://files.evogb.win/zGwPRv.jpg" alt="Nuestro recuerdo 4">
-    <p class="frase">Gracias por quedarte en mis días normales y hacerlos extraordinarios.</p>
-  </div>
-  <div class="foto">
-    <img src="https://files.evogb.win/dh6Y5p.jpg" alt="Nuestro recuerdo 5">
-    <p class="frase">Si el tiempo se detuviera, que sea en un momento como este contigo.</p>
-  </div>
+  <div class="foto"><img src="https://files.evogb.win/rA6oiw.jpg"><p class="frase">Ese día empezó todo. Y no lo cambiaría por nada.</p></div>
+  <div class="foto"><img src="https://files.evogb.win/WCDwKJ.jpg"><p class="frase">Contigo hasta lo más simple se vuelve mi momento favorito.</p></div>
+  <div class="foto"><img src="https://files.evogb.win/Ya4UNB.jpg"><p class="frase">Tu risa es mi lugar seguro.</p></div>
+  <div class="foto"><img src="https://files.evogb.win/zGwPRv.jpg"><p class="frase">Gracias por quedarte en mis días normales y hacerlos extraordinarios.</p></div>
+  <div class="foto"><img src="https://files.evogb.win/dh6Y5p.jpg"><p class="frase">Si el tiempo se detuviera, que sea en un momento como este contigo.</p></div>
 </div>
 
-<!-- CARTA CON EFECTO ESCRITURA -->
 <div class="carta">
   <h2>Una carta para ti, Lucero</h2>
   <div id="texto-carta"></div>
 </div>
 
-<footer>Te amo hoy, mañana y siempre ❤️<br>- Cristhofer</footer>
+<button class="boton" onclick="finalFeliz()">¿Quieres ser mi todo? ❤️</button>
+<p id="respuesta" style="font-size:1.5em; color:#ff80bf;"></p>
+
+<footer>Te amo hoy, mañana y siempre<br>- Cristhofer</footer>
 
 <script>
-// CONTADOR desde 6 Julio 2026 4:23pm
 const fechaInicio = new Date('2026-07-06T16:23:00').getTime();
-
 function actualizarContador() {
-  const ahora = new Date().getTime();
-  const diferencia = ahora - fechaInicio;
-
-  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-  const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-  document.getElementById('dias').innerText = dias;
-  document.getElementById('horas').innerText = horas;
-  document.getElementById('minutos').innerText = minutos;
-  document.getElementById('segundos').innerText = segundos;
+  const dif = new Date().getTime() - fechaInicio;
+  document.getElementById('dias').innerText = Math.floor(dif / 86400000);
+  document.getElementById('horas').innerText = Math.floor((dif % 86400000) / 3600000);
+  document.getElementById('minutos').innerText = Math.floor((dif % 3600000) / 60000);
+  document.getElementById('segundos').innerText = Math.floor((dif % 60000) / 1000);
 }
-setInterval(actualizarContador, 1000);
-actualizarContador();
+setInterval(actualizarContador, 1000); actualizarContador();
 
-// EFECTO MAQUINA DE ESCRIBIR
+function crearCorazon() {
+  const c = document.createElement('div'); c.classList.add('corazon');
+  c.style.left = Math.random() * 100 + 'vw'; c.innerText = '❤️';
+  document.body.appendChild(c); setTimeout(() => c.remove(), 5000);
+}
+setInterval(crearCorazon, 200);
+
+function iniciarMusica() {
+  document.getElementById('musica').play();
+  for(let i=0; i<50; i++) setTimeout(crearCorazon, i*30);
+}
+
 const texto = `Lucero,
 
-Desde el momento exacto en que empezamos el 6 de julio a las 4:23pm, mi vida cambió.
+Desde el 6 de julio a las 4:23pm mi mundo cambió. 
+Gracias por cada risa, cada abrazo, cada "aquí estoy".
 
-Cada día contigo se siente como el primero. Gracias por tus abrazos, por tus risas, por quedarte.
+En cada foto hay un pedazo de nosotros. 
+Y en mi corazón, estás tú completa.
 
-En estas fotos está guardada una parte de nosotros. Y en mi corazón está guardada toda tú.
-
-Prometo seguir eligiéndote todos los días.
+Te elijo hoy, mañana y todos los días de mi vida.
 
 Con todo mi amor,
 Cristhofer ❤️`;
-
-let i = 0;
-function escribir() {
-  if (i < texto.length) {
-    document.getElementById('texto-carta').innerHTML += texto.charAt(i);
-    i++;
-    setTimeout(escribir, 50); // velocidad de escritura
-  }
+let i = 0; function escribir() {
+  if (i < texto.length) { document.getElementById('texto-carta').innerHTML += texto.charAt(i); i++; setTimeout(escribir, 45); }
 }
 window.onload = escribir;
-</script>
 
+function finalFeliz() {
+  document.getElementById('respuesta').innerText = "Sabía que dirías que sí 😍 Te amo";
+  for(let i=0; i<100; i++) setTimeout(crearCorazon, i*20);
+}
+</script>
 </body>
 </html>
